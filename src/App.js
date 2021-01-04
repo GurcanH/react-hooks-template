@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { useForm } from './useForm';
 import { Hello } from './Hello';
-
+import { useMeasure } from './useMeasure';
 const App = () => {
   const [values, handleChange] = useForm({
     email: '',
@@ -15,6 +15,9 @@ const App = () => {
   });
 
   const [showHello, setShowHello] = useState(true);
+
+  const [rect, inputRef2] = useMeasure([]);
+  console.log(rect);
   // useEffect(() => {
   //   const onMouseMove = e => {
   //     console.log(e);
@@ -43,6 +46,7 @@ const App = () => {
         onChange={handleChange}
       />
       <input
+        ref={inputRef2}
         name='firstName'
         placeholder='firstName'
         value={values.firstName}
